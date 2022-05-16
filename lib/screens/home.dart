@@ -58,7 +58,6 @@ class _HomePageState extends State<HomePage> {
             if (_searchQueryController == null ||
                 _searchQueryController.text.isEmpty) {
               Navigator.pop(context);
-              return;
             }
             _clearSearchQuery();
           },
@@ -70,6 +69,17 @@ class _HomePageState extends State<HomePage> {
       IconButton(
         icon: const Icon(Icons.search),
         onPressed: _startSearch,
+      ),
+      IconButton(
+        onPressed: () {
+          final mainProvider =
+              Provider.of<MainProvider>(context, listen: false);
+          mainProvider.change();
+        },
+        icon: const Icon(
+          Icons.switch_access_shortcut,
+        ),
+        //change
       ),
     ];
   }

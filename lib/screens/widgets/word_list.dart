@@ -38,13 +38,11 @@ class _WordListState extends State<WordList> {
       height: MediaQuery.of(context).size.height * .9,
       child: Consumer<MainProvider>(builder: (context, value, child) {
         return Scrollbar(
-          isAlwaysShown: true,
           thickness: 12,
-          hoverThickness: 12,
           child: ListView.builder(
             padding: EdgeInsets.only(bottom: 10, right: 10),
             itemBuilder: (context, index) {
-              return WordItem(value.words[index]);
+              return WordItem(value.words[index], value.isWord);
             },
             itemCount: value.words.length,
           ),

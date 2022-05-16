@@ -4,14 +4,15 @@ import 'package:rus_uzb/models/word.dart';
 
 class DetailsPage extends StatelessWidget {
   final Word word;
-  const DetailsPage(this.word, {Key? key}) : super(key: key);
+  final bool isWord;
+  const DetailsPage(this.word, this.isWord, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          word.uzb ?? "...",
+          isWord ? "dcmskd" : word.uzb ?? "...",
         ),
       ),
       body: Column(
@@ -24,7 +25,7 @@ class DetailsPage extends StatelessWidget {
               Container(
                 height: 72,
               ),
-              Text(word.uzb??".."),
+              Text(word.uzb ?? ".."),
               SizedBox(
                 height: 16,
               ),

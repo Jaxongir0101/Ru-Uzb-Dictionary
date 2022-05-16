@@ -4,14 +4,15 @@ import 'package:rus_uzb/screens/details_page.dart';
 
 class WordItem extends StatelessWidget {
   final Word word;
-  const WordItem(this.word, {Key? key}) : super(key: key);
+  final bool isWord;
+  const WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => DetailsPage(word)));
+            .push(MaterialPageRoute(builder: (context) => DetailsPage(word,isWord)));
       },
       child: Card(
         elevation: 8,
@@ -22,7 +23,7 @@ class WordItem extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  word.uzb ?? "...",
+                  isWord ? word.rus! : word.uzb ?? "...",
                 ),
               ),
               const Icon(
