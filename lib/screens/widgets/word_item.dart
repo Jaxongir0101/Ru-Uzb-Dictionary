@@ -11,8 +11,8 @@ class WordItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => DetailsPage(word,isWord)));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => DetailsPage(word, isWord)));
       },
       child: Card(
         elevation: 8,
@@ -21,6 +21,10 @@ class WordItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Row(
             children: [
+              IconButton(
+                icon: const Icon(Icons.star_outline),
+                onPressed: () {},
+              ),
               Expanded(
                 child: Text(
                   isWord ? word.rus! : word.uzb ?? "...",

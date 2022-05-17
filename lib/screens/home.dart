@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
       controller: _searchQueryController,
       autofocus: true,
       decoration: const InputDecoration(
-        
         hintText: "Search Data...",
         hintStyle: TextStyle(color: Colors.white70),
       ),
@@ -71,21 +70,29 @@ class _HomePageState extends State<HomePage> {
         icon: const Icon(Icons.search),
         onPressed: _startSearch,
       ),
-       IconButton(
-        icon: const Icon(Icons.star_outline),
-        onPressed: _startSearch,
-      ),
+
+
       IconButton(
-        onPressed: () {
-          final mainProvider =
-              Provider.of<MainProvider>(context, listen: false);
-          mainProvider.change();
-        },
-        icon: const Icon(
-          Icons.switch_access_shortcut,
-        ),
-        //change
+        icon: const Icon(Icons.star_outline),
+        onPressed: (){},
       ),
+      ////// star
+    
+
+    InkWell(
+      onTap: (){
+            final mainProvider =
+                Provider.of<MainProvider>(context, listen: false);
+            mainProvider.change();
+      },
+      child: Container(
+     height: 24,
+     width: 24,
+            child: Image.asset("assets/image/change.png",color: Colors.white,)),
+    ),
+    
+       SizedBox(width: 16,)
+      
     ];
   }
 
