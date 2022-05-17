@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rus_uzb/models/word.dart';
+
 import 'package:rus_uzb/screens/widgets/word_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../database_helper.dart';
@@ -40,7 +40,7 @@ class _WordListState extends State<WordList> {
         return Scrollbar(
           thickness: 12,
           child: ListView.builder(
-            padding: EdgeInsets.only(bottom: 10, right: 10),
+            padding: const EdgeInsets.only(bottom: 10, right: 10),
             itemBuilder: (context, index) {
               return WordItem(value.words[index], value.isWord);
             },

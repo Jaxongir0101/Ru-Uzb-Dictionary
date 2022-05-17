@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rus_uzb/main_proider.dart';
+
 import 'package:rus_uzb/models/word.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -12,7 +12,7 @@ class DetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isWord ? "dcmskd" : word.uzb ?? "...",
+          isWord ? word.rus! : word.uzb ?? "...",
         ),
       ),
       body: Column(
@@ -25,13 +25,15 @@ class DetailsPage extends StatelessWidget {
               Container(
                 height: 72,
               ),
-              Text(word.uzb ?? ".."),
+              Text(  isWord ? word.uzb! : word.rus ?? "...",
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(
                 height: 16,
               ),
               Text(
-                word.rus ?? "...",
-                style: TextStyle(fontSize: 24),
+                  isWord ? word.rus! : word.uzb ?? "...",
+                style: TextStyle(fontSize: 28),
               )
             ],
           )

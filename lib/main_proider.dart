@@ -4,7 +4,7 @@ import 'package:rus_uzb/models/word.dart';
 
 class MainProvider extends ChangeNotifier {
   final List<Word> words = [];
-  bool isWord = true;
+  bool isWord = false;
 
   initList({String? word}) async {
     words.clear();
@@ -17,7 +17,7 @@ class MainProvider extends ChangeNotifier {
   }
 
   change(){
-    isWord != isWord;
+    isWord = !isWord;
     notifyListeners();
   }
 

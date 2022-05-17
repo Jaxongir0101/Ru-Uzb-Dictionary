@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rus_uzb/database_helper.dart';
+import 'package:rus_uzb/main_proider.dart';
 import 'package:rus_uzb/screens/widgets/word_list.dart';
 import 'package:provider/provider.dart';
-
-import '../main_proider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,38 +12,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController _searchQueryController = TextEditingController();
+  final TextEditingController _searchQueryController = TextEditingController();
   bool _isSearching = false;
   String searchQuery = "Search query";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black12,
         leading: _isSearching ? const BackButton() : Container(),
-        title: _isSearching ? _buildSearchField() : const Text("Dictionary"),
+        title: _buildSearchField(),
         actions: _buildActions(),
       ),
-      body: WordList(),
+      body: const WordList(),
     );
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     DatabaseHelper.intance.loadDB(context);
   }
 
   Widget _buildSearchField() {
     return TextField(
+      autocorrect: true,
       controller: _searchQueryController,
       autofocus: true,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
+        
         hintText: "Search Data...",
-        border: InputBorder.none,
-        hintStyle: TextStyle(color: Colors.white30),
+        hintStyle: TextStyle(color: Colors.white70),
       ),
-      style: TextStyle(color: Colors.white, fontSize: 16.0),
+      style: const TextStyle(color: Colors.white, fontSize: 16.0),
       onChanged: (query) => updateSearchQuery(query),
     );
   }
@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
             if (_searchQueryController == null ||
                 _searchQueryController.text.isEmpty) {
               Navigator.pop(context);
+              return;
             }
             _clearSearchQuery();
           },
@@ -68,6 +69,10 @@ class _HomePageState extends State<HomePage> {
     return <Widget>[
       IconButton(
         icon: const Icon(Icons.search),
+        onPressed: _startSearch,
+      ),
+       IconButton(
+        icon: const Icon(Icons.star_outline),
         onPressed: _startSearch,
       ),
       IconButton(
