@@ -15,23 +15,24 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _searchQueryController = TextEditingController();
   bool _isSearching = false;
   String searchQuery = "Search query";
+  bool _isSlovo = false;
+  @override
+  void initState() {
+    super.initState();
+    DatabaseHelper.intance.loadDB(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black12,
         leading: _isSearching ? const BackButton() : Container(),
-        title: _buildSearchField(),
+        title:  _buildSearchField() ,
         actions: _buildActions(),
       ),
       body: const WordList(),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    DatabaseHelper.intance.loadDB(context);
   }
 
   Widget _buildSearchField() {
@@ -71,28 +72,31 @@ class _HomePageState extends State<HomePage> {
         onPressed: _startSearch,
       ),
 
-
       IconButton(
         icon: const Icon(Icons.star_outline),
-        onPressed: (){},
+        onPressed: () {},
       ),
       ////// star
-    
 
-    InkWell(
-      onTap: (){
-            final mainProvider =
-                Provider.of<MainProvider>(context, listen: false);
-            mainProvider.change();
-      },
-      child: Container(
-     height: 24,
-     width: 24,
-            child: Image.asset("assets/image/change.png",color: Colors.white,)),
-    ),
-    
-       SizedBox(width: 16,)
-      
+      InkWell(
+        onTap: () {
+          final mainProvider =
+              Provider.of<MainProvider>(context, listen: false);
+          mainProvider.change();
+          _isSlovo = !_isSlovo;
+        },
+        child: Container(
+            height: 24,
+            width: 24,
+            child: Image.asset(
+              "assets/image/change.png",
+              color: Colors.white,
+            )),
+      ),
+
+      SizedBox(
+        width: 16,
+      )
     ];
   }
 
@@ -119,12 +123,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _clearSearchQuery() {
-    _searchQueryController.clear();
-    updateSearchQuery("");
+    setState(() {
+      _searchQueryController.clear();
+      updateSearchQuery("");
+    });
   }
 
-  void updateQuery({String? word}) {
+  void updateQuery({
+    String? word,
+  }) {
     final mainProvider = Provider.of<MainProvider>(context, listen: false);
-    mainProvider.initList(word: word);
+    mainProvider.initList(
+      word: word,
+      isSlovo: _isSlovo,
+    );
   }
 }

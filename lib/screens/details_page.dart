@@ -25,14 +25,14 @@ class DetailsPage extends StatelessWidget {
               Container(
                 height: 72,
               ),
-              Text(  isWord ? word.uzb! : word.rus ?? "...",
+              Text(  isWord ? word.rus! : word.uzb ?? "...",
                 style: TextStyle(fontSize: 20),
               ),
               SizedBox(
                 height: 16,
               ),
               Text(
-                  isWord ? word.rus! : word.uzb ?? "...",
+                  isWord ? word.uzb! : word.rus ?? "...",
                 style: TextStyle(fontSize: 28),
               )
             ],

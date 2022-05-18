@@ -36,7 +36,7 @@ class _WordListState extends State<WordList> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .9,
-      child: Consumer<MainProvider>(builder: (context, value, child) {
+      child: Consumer<MainProvider>(builder: (context, value, child) {  
         return Scrollbar(
           thickness: 12,
           child: ListView.builder(

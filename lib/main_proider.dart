@@ -6,20 +6,19 @@ class MainProvider extends ChangeNotifier {
   final List<Word> words = [];
   bool isWord = false;
 
-  initList({String? word}) async {
+  initList({String? word, bool? isSlovo}) async {
     words.clear();
     if (word == null) {
       words.addAll(await DatabaseHelper.intance.getTasks());
     } else {
-      words.addAll(await DatabaseHelper.intance.getWordLike(word));
+      words.addAll(await DatabaseHelper.intance.getWordLike(word, isSlovo!));
     }
+
     notifyListeners();
   }
 
-  change(){
+  change() {
     isWord = !isWord;
     notifyListeners();
   }
-
-
 }

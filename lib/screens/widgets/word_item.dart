@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:rus_uzb/models/word.dart';
 import 'package:rus_uzb/screens/details_page.dart';
 
-class WordItem extends StatelessWidget {
+class WordItem extends StatefulWidget {
   final Word word;
   final bool isWord;
-  const WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
+  WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
+
+  @override
+  State<WordItem> createState() => _WordItemState();
+}
+
+class _WordItemState extends State<WordItem> {
+  bool isTab = true;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => DetailsPage(word, isWord)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetailsPage(widget.word, widget.isWord)));
       },
       child: Card(
         elevation: 8,
@@ -22,12 +29,23 @@ class WordItem extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.star_outline),
-                onPressed: () {},
+                icon: isTab
+                    ? Icon(Icons.star_outline)
+                    : Icon(
+                        Icons.star,
+                        color: Colors.black45,
+                      ),
+                onPressed: () {
+                  setState(() {
+                    isTab = !isTab;
+                  });
+                },
               ),
+              const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  isWord ? word.rus! : word.uzb ?? "...",
+                  widget.isWord ? widget.word.rus! : widget.word.uzb ?? "...",
+                  style: const TextStyle(fontSize: 16),
                 ),
               ),
               const Icon(
