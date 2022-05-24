@@ -5,7 +5,7 @@ import 'package:rus_uzb/screens/details_page.dart';
 class WordItem extends StatefulWidget {
   final Word word;
   final bool isWord;
-  WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
+const  WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
 
   @override
   State<WordItem> createState() => _WordItemState();
@@ -30,8 +30,8 @@ class _WordItemState extends State<WordItem> {
             children: [
               IconButton(
                 icon: isTab
-                    ? Icon(Icons.star_outline)
-                    : Icon(
+                    ?const Icon(Icons.star_outline)
+                    :const Icon(
                         Icons.star,
                         color: Colors.black45,
                       ),

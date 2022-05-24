@@ -28,7 +28,7 @@ class DetailsPage extends StatelessWidget {
               Text(  isWord ? word.rus! : word.uzb ?? "...",
                 style: TextStyle(fontSize: 20),
               ),
-              SizedBox(
+             const SizedBox(
                 height: 16,
               ),
               Text(

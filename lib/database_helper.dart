@@ -85,7 +85,7 @@ class DatabaseHelper {
     return result;
   }
 
-  Future<List<Word>> getTasks() async {
+  Future<List<Word>> getWords() async {
     final List<Map<String, Object?>>? taskMap = await getWordMap();
     final List<Word> words = [];
     taskMap?.forEach((element) {

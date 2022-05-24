@@ -9,7 +9,7 @@ class MainProvider extends ChangeNotifier {
   initList({String? word, bool? isSlovo}) async {
     words.clear();
     if (word == null) {
-      words.addAll(await DatabaseHelper.intance.getTasks());
+      words.addAll(await DatabaseHelper.intance.getWords());
     } else {
       words.addAll(await DatabaseHelper.intance.getWordLike(word, isSlovo!));
     }

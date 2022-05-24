@@ -16,11 +16,6 @@ class _HomePageState extends State<HomePage> {
   bool _isSearching = false;
   String searchQuery = "Search query";
   bool _isSlovo = false;
-  @override
-  void initState() {
-    super.initState();
-    DatabaseHelper.intance.loadDB(context);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black12,
         leading: _isSearching ? const BackButton() : Container(),
-        title:  _buildSearchField() ,
+        title: _isSearching ? _buildSearchField() : Text("Dictionary"),
         actions: _buildActions(),
       ),
       body: const WordList(),
