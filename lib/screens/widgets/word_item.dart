@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:rus_uzb/main_proider.dart';
 import 'package:rus_uzb/models/word.dart';
 import 'package:rus_uzb/screens/details_page.dart';
+import 'package:provider/provider.dart';
 
 class WordItem extends StatefulWidget {
   final Word word;
   final bool isWord;
-const  WordItem(this.word, this.isWord, {Key? key}) : super(key: key);
+
+
+  const WordItem(this.word, this.isWord,  {Key? key})
+      : super(key: key);
 
   @override
   State<WordItem> createState() => _WordItemState();
@@ -30,14 +35,14 @@ class _WordItemState extends State<WordItem> {
             children: [
               IconButton(
                 icon: isTab
-                    ?const Icon(Icons.star_outline)
-                    :const Icon(
+                    ? const Icon(Icons.star_outline)
+                    : const Icon(
                         Icons.star,
                         color: Colors.black45,
                       ),
                 onPressed: () {
                   setState(() {
-                    isTab = !isTab;
+                    isTab != isTab;
                   });
                 },
               ),
@@ -59,4 +64,6 @@ class _WordItemState extends State<WordItem> {
       ),
     );
   }
+
+
 }

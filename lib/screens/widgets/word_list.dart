@@ -42,7 +42,7 @@ class _WordListState extends State<WordList> {
           child: ListView.builder(
             padding: const EdgeInsets.only(bottom: 10, right: 10),
             itemBuilder: (context, index) {
-              return WordItem(value.words[index], value.isWord);
+              return WordItem(value.words[index], value.isWord, index);
             },
             itemCount: value.words.length,
           ),
@@ -53,6 +53,6 @@ class _WordListState extends State<WordList> {
 
   void updateQuery({String? word, bool? isSlovo}) {
     final mainProvider = Provider.of<MainProvider>(context, listen: false);
-    mainProvider.initList(word: word , isSlovo: isSlovo);
+    mainProvider.initList(word: word, isSlovo: isSlovo);
   }
 }

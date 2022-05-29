@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:rus_uzb/database_helper.dart';
 import 'package:rus_uzb/models/word.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainProvider extends ChangeNotifier {
   final List<Word> words = [];
@@ -21,4 +22,6 @@ class MainProvider extends ChangeNotifier {
     isWord = !isWord;
     notifyListeners();
   }
+
+
 }

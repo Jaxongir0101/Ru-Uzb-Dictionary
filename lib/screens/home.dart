@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rus_uzb/database_helper.dart';
 import 'package:rus_uzb/main_proider.dart';
 import 'package:rus_uzb/screens/widgets/word_list.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black12,
         leading: _isSearching ? const BackButton() : Container(),
-        title: _isSearching ? _buildSearchField() : Text("Dictionary"),
+        title: _buildSearchField(),
         actions: _buildActions(),
       ),
       body: const WordList(),
@@ -69,7 +68,9 @@ class _HomePageState extends State<HomePage> {
 
       IconButton(
         icon: const Icon(Icons.star_outline),
-        onPressed: () {},
+        onPressed: () {
+          
+        },
       ),
       ////// star
 
