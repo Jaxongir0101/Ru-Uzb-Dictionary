@@ -42,7 +42,7 @@ class _WordListState extends State<WordList> {
           child: ListView.builder(
             padding: const EdgeInsets.only(bottom: 10, right: 10),
             itemBuilder: (context, index) {
-              return WordItem(value.words[index], value.isWord, index);
+              return WordItem(value.words[index], value.isWord);
             },
             itemCount: value.words.length,
           ),
